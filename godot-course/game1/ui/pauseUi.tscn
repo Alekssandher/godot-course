@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://focxka045l7h"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_g5nod"]
+[ext_resource type="FontFile" uid="uid://cgesryr8t1odd" path="res://addons/Tiny swords/Resources/Resources/press-start-2p/PressStart2P-Regular.ttf" id="2_ak48v"]
+
+[node name="pauseUi" type="CanvasLayer"]
+
+[node name="pause" type="Button" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+offset_left = 55.0
+offset_top = 26.0
+offset_right = 231.0
+offset_bottom = 63.0
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ak48v")
+theme_override_font_sizes/font_size = 29
+text = "Pause"
+flat = true
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_g5nod")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1116.0
+offset_bottom = 613.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.231373)
+
+[node name="continue" type="Button" parent="Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 436.0
+offset_top = 316.0
+offset_right = 676.0
+offset_bottom = 353.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ak48v")
+theme_override_font_sizes/font_size = 29
+text = "Continue"
+flat = true
+
+[node name="paused" type="Button" parent="Control"]
+process_mode = 3
+offset_left = 66.0
+offset_top = 26.0
+offset_right = 248.0
+offset_bottom = 63.0
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ak48v")
+theme_override_font_sizes/font_size = 29
+text = "Paused"
+flat = true
+
+[connection signal="pressed" from="pause" to="Control" method="_on_pause_pressed"]
+[connection signal="pressed" from="Control/continue" to="Control" method="_on_button_pressed"]

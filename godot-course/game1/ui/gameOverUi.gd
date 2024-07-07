@@ -12,8 +12,7 @@ func _ready():
 	restartCooldown = restartDelay
 func _process(delta):
 	restartCooldown -= delta
-	if restartCooldown <= 0:
-		restartGame()
+
 		
 func restartGame():
 	GameManager.reset()
@@ -21,3 +20,10 @@ func restartGame():
 	
 	pass
 	
+
+
+func _on_button_pressed():
+	
+	restartGame()
+	pass # Replace with function body.
+

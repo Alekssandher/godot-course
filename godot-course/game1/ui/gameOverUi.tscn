@@ -123,6 +123,7 @@ _data = {
 script = ExtResource("1_t6tlp")
 
 [node name="background" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,8 +205,20 @@ unique_name_in_owner = true
 layout_mode = 2
 label_settings = SubResource("LabelSettings_76j42")
 
+[node name="Button" type="Button" parent="bottomPanel/CenterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_s4vl4")
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+flat = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5h16p")
 }
 autoplay = "new_animation"
+
+[connection signal="pressed" from="bottomPanel/CenterContainer/GridContainer/Button" to="." method="_on_button_pressed"]

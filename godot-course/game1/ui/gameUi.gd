@@ -9,3 +9,6 @@ func _process(delta:float):
 	
 	meatLabel.text = str(GameManager.meatCounter)
 	moneyLabel.text = str(GameManager.moneyCounter)
+
+
+

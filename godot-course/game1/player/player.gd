@@ -29,16 +29,26 @@ var attackColdown: float = 0
 var hitboxColdown: float = 0
 var powerColdown: float = 30
 
+
+var inputDir: Vector2
+var i: int  = 1
+var i2: int = 1
+
+
 signal meatCollected(value: int)
 signal moneyCollected(value: int)
-
 func _ready():
+	
 	GameManager.player = self
 	meatCollected.connect(func(value: int): GameManager.meatCounter += 1)
 	moneyCollected.connect(func(value: int): GameManager.moneyCounter += 5)
 func _process(delta: float) -> void:
 	GameManager.playerPosition = position
 	
+	if i2 == 2:
+		GameManager.timeElapsed = 0 
+		
+	i2 += 1
 	readInput()
 	if isAttacking:
 		attackColdown -= delta
@@ -120,7 +130,13 @@ func attack() -> void:
 	if isAttacking: 
 		return
 	attackColdown = 0.6
-	animationPlayer.play("attackSide1")
+	
+	if i%2 == 0:
+		animationPlayer.play("attackSide2")
+	else:
+		animationPlayer.play("attackSide1")
+	
+	i += 1
 	
 	isAttacking = true
 	
@@ -193,3 +209,9 @@ func heal(amount: int):
 	if health > maxHealth:
 		health = maxHealth
 	return health
+
+
+func _on_virtual_joystick_analogic_chage(move: Vector2):
+	input_vector = move
+	
+

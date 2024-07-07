@@ -12,6 +12,9 @@ var player: Player
 var playerPosition: Vector2
 var isGameOver: bool = false
 
+#Pause
+var a = -1
+
 func _process(delta):
 
 	timeElapsed += delta
